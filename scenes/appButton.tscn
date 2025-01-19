@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs71xmr61eax5"]
+
+[ext_resource type="Script" path="res://src/codeblocks/app_button.gd" id="1_cuguy"]
+[ext_resource type="Texture2D" uid="uid://crlog043630wo" path="res://assets/ui/app_bar.png" id="2_11sru"]
+[ext_resource type="FontFile" uid="uid://direue8w82y8w" path="res://assets/font/dashlite_font.png" id="3_iia6k"]
+
+[node name="Control" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1269.0
+offset_bottom = -787.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cuguy")
+
+[node name="Texture" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_11sru")
+patch_margin_left = 2
+patch_margin_top = 1
+patch_margin_right = 2
+patch_margin_bottom = 11
+
+[node name="Text" type="RichTextLabel" parent="Texture"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 9.0
+offset_bottom = 9.0
+theme_override_fonts/normal_font = ExtResource("3_iia6k")
+scroll_active = false
+autowrap_mode = 0

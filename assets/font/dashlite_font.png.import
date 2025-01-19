@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://direue8w82y8w"
+path="res://.godot/imported/dashlite_font.png-f57fb0e2ab3d76a8ecd7c3f13c030039.fontdata"
+
+[deps]
+
+source_file="res://assets/font/dashlite_font.png"
+dest_files=["res://.godot/imported/dashlite_font.png-f57fb0e2ab3d76a8ecd7c3f13c030039.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=false
+scaling_mode=0

@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtpsxtvywlxgj"]
+
+[ext_resource type="PackedScene" uid="uid://cnfevitk2vdng" path="res://scenes/wallpaper.tscn" id="1_06jv1"]
+[ext_resource type="Script" path="res://src/codeblocks/game.gd" id="1_8geyu"]
+[ext_resource type="PackedScene" uid="uid://dj5xcw8fbh1hs" path="res://scenes/window.tscn" id="2_y0kwn"]
+[ext_resource type="FontFile" uid="uid://direue8w82y8w" path="res://assets/font/dashlite_font.png" id="3_0umyg"]
+[ext_resource type="Texture2D" uid="uid://c3saahjfh6gjr" path="res://assets/ui/bottom_bar.png" id="3_eb3j5"]
+[ext_resource type="Texture2D" uid="uid://b7c41nufetyh3" path="res://assets/ui/info_bar.png" id="4_pbxeu"]
+[ext_resource type="Script" path="res://src/codeblocks/info.gd" id="5_mai7y"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_8geyu")
+
+[node name="wallpaper" parent="." instance=ExtResource("1_06jv1")]
+z_index = -25
+scale = Vector2(3.333, 3.333)
+
+[node name="Window" parent="." groups=["window_panels"] instance=ExtResource("2_y0kwn")]
+z_index = 1
+offset_left = 149.0
+offset_top = 67.0
+offset_right = 149.0
+offset_bottom = 67.0
+
+[node name="Window2" parent="." groups=["window_panels"] instance=ExtResource("2_y0kwn")]
+z_index = 2
+offset_left = 240.0
+offset_top = 25.0
+offset_right = 240.0
+offset_bottom = 25.0
+
+[node name="Window3" parent="." groups=["window_panels"] instance=ExtResource("2_y0kwn")]
+z_index = 3
+offset_left = 17.0
+offset_top = 23.0
+offset_right = 17.0
+offset_bottom = 23.0
+
+[node name="Window4" parent="." groups=["window_panels"] instance=ExtResource("2_y0kwn")]
+z_index = 4
+offset_left = 262.0
+offset_top = 94.0
+offset_right = 262.0
+offset_bottom = 94.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(213.33, 133.33)
+zoom = Vector2(3, 3)
+
+[node name="toolbar" type="NinePatchRect" parent="."]
+z_index = 50
+offset_top = 251.0
+offset_right = 427.0
+offset_bottom = 267.0
+texture = ExtResource("3_eb3j5")
+axis_stretch_vertical = 1
+
+[node name="Info" type="TextureRect" parent="toolbar"]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 2.0
+offset_right = 426.0
+offset_bottom = 15.0
+texture = ExtResource("4_pbxeu")
+stretch_mode = 1
+script = ExtResource("5_mai7y")
+
+[node name="Hour" type="RichTextLabel" parent="toolbar/Info"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 8.0
+theme_override_fonts/normal_font = ExtResource("3_0umyg")
+text = "00"
+
+[node name="Minute" type="RichTextLabel" parent="toolbar/Info"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 3.0
+offset_right = 38.0
+offset_bottom = 8.0
+theme_override_fonts/normal_font = ExtResource("3_0umyg")
+text = "00"
+
+[node name="TimeOfDay" type="RichTextLabel" parent="toolbar/Info"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 8.0
+theme_override_fonts/normal_font = ExtResource("3_0umyg")
+text = "AM"

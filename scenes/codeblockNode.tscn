@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://2ysuxfgjof3j"]
+
+[ext_resource type="Script" path="res://src/codeblocks/codeblock_node.gd" id="1_vlevt"]
+[ext_resource type="Texture2D" uid="uid://bb85o62xb0b7d" path="res://assets/button/button_ends.png" id="2_n2s16"]
+[ext_resource type="FontFile" uid="uid://direue8w82y8w" path="res://assets/font/dashlite_font.png" id="3_h0dkn"]
+
+[node name="CodeblockNode" type="Node2D"]
+script = ExtResource("1_vlevt")
+
+[node name="Texture" type="NinePatchRect" parent="."]
+offset_right = 27.0
+offset_bottom = 13.0
+texture = ExtResource("2_n2s16")
+patch_margin_left = 2
+patch_margin_right = 2
+axis_stretch_vertical = 1
+
+[node name="Text" type="RichTextLabel" parent="."]
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 24.0
+offset_bottom = 8.0
+theme_override_fonts/normal_font = ExtResource("3_h0dkn")
+text = "start"
+scroll_active = false
+autowrap_mode = 0

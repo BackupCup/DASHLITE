@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnfevitk2vdng"]
+
+[ext_resource type="Script" path="res://src/codeblocks/wallpaper.gd" id="1_u0dvp"]
+[ext_resource type="Texture2D" uid="uid://epq1kgceo04" path="res://assets/backgrounds/day.png" id="2_chjk1"]
+[ext_resource type="Texture2D" uid="uid://bg6k70ldb5ry1" path="res://assets/backgrounds/dusk.png" id="3_obaua"]
+[ext_resource type="Texture2D" uid="uid://dxqk76yk02s3f" path="res://assets/backgrounds/night.png" id="4_8ubyi"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u0dvp")
+
+[node name="TextureDay" type="TextureRect" parent="."]
+texture = ExtResource("2_chjk1")
+stretch_mode = 4
+
+[node name="TextureDusk" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_obaua")
+stretch_mode = 4
+
+[node name="TextureNight" type="TextureRect" parent="."]
+offset_right = 128.0
+offset_bottom = 80.0
+texture = ExtResource("4_8ubyi")
+stretch_mode = 4
