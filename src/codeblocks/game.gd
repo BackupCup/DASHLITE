@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var buttonScene = preload("res://scenes/appButton.tscn")
+@onready var windowScene = preload("res://scenes/window.tscn")
 
 # Dictionary mapping Input.CURSOR types to their corresponding textures
 var cursor_textures = {
@@ -29,16 +30,20 @@ var previousButtonSize: int = 0
 func _ready():
 	for cursor_type in cursor_textures:
 		Input.set_custom_mouse_cursor(cursor_textures[cursor_type], cursor_type)
-	for window in get_tree().get_nodes_in_group("window_panels"):
-		add_window_to_bottom_bar(window)
+	
+	create_window(true, Vector2(0, 0), "WWWW")
+	create_window(false, Vector2(50, 120), "simple if injection")
+	create_window(true, Vector2(150, 0), "time teller")
+	create_window(true, Vector2(250, 120), "current computer.msi")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var mouse_pos = get_global_mouse_position()
 
 func add_window_to_bottom_bar(window: Node):
 	if window is Control:
 		var button = buttonScene.instantiate()
+		button.set_controlled_window(window)
 		
 		button.get_child(0).get_child(0).text = window.name
 		button.connect("pressed", Callable(self, "_on_window_button_pressed").bind(window, button))
@@ -49,13 +54,17 @@ func add_window_to_bottom_bar(window: Node):
 		print("NODE %s IS IN 'window_panels' GROUP BUT IT SHOULDN'T BE", window)
 
 func _on_window_button_pressed(window: Control, button: Control):
-	if (window.visible):
-		window.hide()
-		button.switch_state()
-	else:
-		var original_z_index = window.z_index
-		window.decrement_windows_z_index(window)
-		window.z_index = window.get_max_z_index() + 1
-		
-		window.show()
-		button.switch_state()
+	button.switch_state(window)
+
+func create_window(is_closeable: bool, window_pos: Vector2, window_name: String) -> Control:
+	var window = windowScene.instantiate()
+	window.is_closeable = is_closeable
+	window.position = window_pos
+	window.name = window_name
+	add_child(window)
+	window.add_to_group("window_panels")
+	
+	add_window_to_bottom_bar(window)
+	
+	return window
+	

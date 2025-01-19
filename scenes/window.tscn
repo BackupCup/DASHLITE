@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj5xcw8fbh1hs"]
+[gd_scene load_steps=4 format=3 uid="uid://dj5xcw8fbh1hs"]
 
 [ext_resource type="Texture2D" uid="uid://bxo11eyi3xo6" path="res://assets/ui/window.png" id="1_5s5ph"]
 [ext_resource type="Script" path="res://src/codeblocks/window.gd" id="1_nvjl6"]
+[ext_resource type="FontFile" uid="uid://direue8w82y8w" path="res://assets/font/dashlite_font.png" id="3_0dwnd"]
 
 [node name="Window" type="Control"]
 layout_mode = 3
@@ -9,8 +10,9 @@ anchors_preset = 0
 script = ExtResource("1_nvjl6")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_right = 141.0
-offset_bottom = 140.0
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
 
 [node name="Texture" type="NinePatchRect" parent="GridContainer"]
 layout_mode = 2
@@ -21,3 +23,13 @@ patch_margin_left = 3
 patch_margin_top = 15
 patch_margin_right = 32
 patch_margin_bottom = 5
+
+[node name="Text" type="RichTextLabel" parent="GridContainer/Texture"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 10.0
+theme_override_fonts/normal_font = ExtResource("3_0dwnd")
+scroll_active = false
+autowrap_mode = 0
