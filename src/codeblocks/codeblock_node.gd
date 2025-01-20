@@ -24,7 +24,6 @@ func _ready():
 	paddingEnd = sizeMap[blockTexture].y
 	update_texture_size()
 
-
 func get_text_padding() -> Vector2:
 	if $Text.text.length() <= 0:
 		return Vector2(0, 0)
@@ -33,7 +32,7 @@ func get_text_padding() -> Vector2:
 	var textPaddingEnd = 1
 	
 	if wideLetterList.find($Text.text[0].to_lower()) != -1:
-		textPaddingStart = 1
+		textPaddingStart = 0
 		textPaddingEnd += 1
 	
 	if wideLetterList.find($Text.text[-1].to_lower()) != -1:
@@ -47,6 +46,7 @@ func update_texture_size():
 	$Texture.patch_margin_right = paddingEnd
 	
 	$Text.text = blockText
+	
 	$Text.position.x += paddingStart + get_text_padding().x
 	
 	var text_width = $Text.text.length() * letter_width + paddingEnd + get_text_padding().y

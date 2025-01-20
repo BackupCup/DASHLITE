@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj5xcw8fbh1hs"]
+[gd_scene load_steps=6 format=3 uid="uid://dj5xcw8fbh1hs"]
 
 [ext_resource type="Texture2D" uid="uid://bxo11eyi3xo6" path="res://assets/ui/window.png" id="1_5s5ph"]
 [ext_resource type="Script" path="res://src/codeblocks/window.gd" id="1_nvjl6"]
 [ext_resource type="FontFile" uid="uid://direue8w82y8w" path="res://assets/font/dashlite_font.png" id="3_0dwnd"]
+[ext_resource type="Script" path="res://src/codeblocks/button_close.gd" id="4_2jwfw"]
+[ext_resource type="Script" path="res://src/codeblocks/button_slide.gd" id="4_wqkc3"]
 
 [node name="Window" type="Control"]
 layout_mode = 3
@@ -33,3 +35,18 @@ offset_bottom = 10.0
 theme_override_fonts/normal_font = ExtResource("3_0dwnd")
 scroll_active = false
 autowrap_mode = 0
+
+[node name="ButtonClose" type="TextureButton" parent="GridContainer/Texture"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 2.0
+offset_right = 97.0
+offset_bottom = 12.0
+script = ExtResource("4_2jwfw")
+
+[node name="ButtonSlide" type="TextureButton" parent="GridContainer/Texture"]
+offset_left = 79.0
+offset_top = 2.0
+offset_right = 88.0
+offset_bottom = 12.0
+script = ExtResource("4_wqkc3")

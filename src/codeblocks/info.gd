@@ -26,7 +26,7 @@ func update_time():
 		minute = time_dict["minute"]
 
 func update_text():
-	if hour > 12:
+	if hour >= 12:
 		$TimeOfDay.text = "PM"
 	else:
 		$TimeOfDay.text = "AM"

@@ -16,13 +16,17 @@ func _ready():
 	textNode.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	update_texture_size()
 	switch_state(controlledWindow)
+	
+	controlledWindow.linkedButton = self
+	controlledWindow.get_child(0).get_child(0).get_child(1).linkedButton = self
+	controlledWindow.get_child(0).get_child(0).get_child(2).linkedButton = self
 
 func get_text_padding() -> Vector2:
 	if textNode.text.length() <= 0:
 		return Vector2(0, 0)
 	
 	var textPaddingStart = 0
-	var textPaddingEnd = 4
+	var textPaddingEnd = 5
 	
 	if wideLetterList.find(textNode.text[0].to_lower()) != -1:
 		textPaddingStart = 1

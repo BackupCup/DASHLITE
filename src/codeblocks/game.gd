@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var buttonScene = preload("res://scenes/appButton.tscn")
 @onready var windowScene = preload("res://scenes/window.tscn")
+@onready var testWindowScene = preload("res://scenes/test.tscn")
 
 # Dictionary mapping Input.CURSOR types to their corresponding textures
 var cursor_textures = {
@@ -31,10 +32,8 @@ func _ready():
 	for cursor_type in cursor_textures:
 		Input.set_custom_mouse_cursor(cursor_textures[cursor_type], cursor_type)
 	
-	create_window(true, Vector2(0, 0), "WWWW")
-	create_window(false, Vector2(50, 120), "simple if injection")
-	create_window(true, Vector2(150, 0), "time teller")
-	create_window(true, Vector2(250, 120), "current computer.msi")
+	create_window(testWindowScene, false, Vector2(250, 120), "test.exe")
+	create_window(testWindowScene, true, Vector2(250, 120), "test.exe")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -56,8 +55,8 @@ func add_window_to_bottom_bar(window: Node):
 func _on_window_button_pressed(window: Control, button: Control):
 	button.switch_state(window)
 
-func create_window(is_closeable: bool, window_pos: Vector2, window_name: String) -> Control:
-	var window = windowScene.instantiate()
+func create_window(window_type: PackedScene, is_closeable: bool, window_pos: Vector2, window_name: String) -> Control:
+	var window = window_type.instantiate()
 	window.is_closeable = is_closeable
 	window.position = window_pos
 	window.name = window_name

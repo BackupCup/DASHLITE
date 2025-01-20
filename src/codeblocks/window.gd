@@ -10,17 +10,33 @@ var drag_offset: Vector2
 var dragged_window = null
 var original_z_index = -1
 
+var linkedButton = null
+
 func _ready():
 	if is_closeable:
 		$GridContainer/Texture.texture = preload("res://assets/ui/window.png")
 	else:
 		$GridContainer/Texture.texture = preload("res://assets/ui/window_uncloseable.png")
+		$GridContainer/Texture/ButtonClose.hide()
+		$GridContainer/Texture/ButtonClose.set_process(false)
+		$GridContainer/Texture/ButtonSlide.position.x += $GridContainer/Texture/ButtonSlide.size.x
 	
 	$GridContainer/Texture/Text.text = name
 	var textSize = get_text_padding().y + $GridContainer/Texture/Text.text.length() * letter_width
 	$GridContainer/Texture/Text.size.x = textSize
 	$GridContainer/Texture/Text.position.x += get_text_padding().x
-	$GridContainer.size.x = textSize + 35
+	
+	var contentSize = find_max_size(self)
+	
+	$GridContainer.size.x = max(contentSize.x, textSize + 35)
+	$GridContainer.size.y = max(contentSize.y, 10)
+	
+	$GridContainer/Texture/ButtonSlide.linkedWindow = self
+	$GridContainer/Texture/ButtonSlide.position.x += contentSize.x - 21
+	
+	$GridContainer/Texture/ButtonClose.linkedWindow = self
+	$GridContainer/Texture/ButtonClose.position.x = $GridContainer/Texture/ButtonSlide.position.x + $GridContainer/Texture/ButtonClose.size.x
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -105,3 +121,16 @@ func get_text_padding() -> Vector2:
 		textPaddingEnd += 1
 	
 	return Vector2(textPaddingStart, textPaddingEnd)
+
+func find_max_size(node: Node) -> Vector2:
+	var maxSize = Vector2(0, 0)
+	
+	if node is NinePatchRect and (node.texture != preload("res://assets/ui/window.png") or node.texture != preload("res://assets/ui/window_uncloseable.png")):
+		var sizeX = max(maxSize.x, node.get_parent().position.x + node.size.x + 4)
+		var sizeY = max(maxSize.y, node.get_parent().position.y + node.size.y + 6)
+		maxSize = Vector2(sizeX, sizeY)
+	
+	for child in node.get_children():
+		maxSize = Vector2(max(maxSize.x, find_max_size(child).x), max(maxSize.y, find_max_size(child).y))
+	
+	return maxSize

@@ -8,19 +8,19 @@
 script = ExtResource("1_vlevt")
 
 [node name="Texture" type="NinePatchRect" parent="."]
-offset_right = 27.0
+offset_right = 22.0
 offset_bottom = 13.0
 texture = ExtResource("2_n2s16")
 patch_margin_left = 2
-patch_margin_right = 2
+patch_margin_right = 1
 axis_stretch_vertical = 1
 
 [node name="Text" type="RichTextLabel" parent="."]
 offset_left = -1.0
 offset_top = 3.0
-offset_right = 24.0
+offset_right = 21.0
 offset_bottom = 8.0
 theme_override_fonts/normal_font = ExtResource("3_h0dkn")
-text = "start"
+text = "stop"
 scroll_active = false
 autowrap_mode = 0

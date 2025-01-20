@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://1dqtwh2bdoc8"]
+
+[ext_resource type="PackedScene" uid="uid://dj5xcw8fbh1hs" path="res://scenes/window.tscn" id="1_xh63j"]
+[ext_resource type="Script" path="res://src/codeblocks/automatic_control.gd" id="2_hq0h1"]
+[ext_resource type="PackedScene" uid="uid://2ysuxfgjof3j" path="res://scenes/codeblockNode.tscn" id="2_t8hnl"]
+[ext_resource type="Texture2D" uid="uid://dewcxsombwi40" path="res://assets/button/button_statement.png" id="3_4brab"]
+[ext_resource type="Texture2D" uid="uid://cdwb1o4gyjj7u" path="res://assets/button/button_condition.png" id="3_pwkns"]
+[ext_resource type="Texture2D" uid="uid://x0oheuquilae" path="res://assets/button/button_fail.png" id="4_p2hex"]
+[ext_resource type="Texture2D" uid="uid://xrh7a8jhch6c" path="res://assets/button/button_success.png" id="5_mpkfb"]
+[ext_resource type="Texture2D" uid="uid://ci2m0tpvb8anl" path="res://assets/button/button_operand.png" id="6_5rix3"]
+
+[node name="Window" instance=ExtResource("1_xh63j")]
+
+[node name="GridContainer" parent="." index="0"]
+offset_right = 35.0
+offset_bottom = 48.0
+
+[node name="ButtonSlide" parent="GridContainer/Texture" index="2"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 9.0
+offset_bottom = 10.0
+
+[node name="Control" type="Control" parent="." index="1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_hq0h1")
+
+[node name="start" parent="Control" index="0" instance=ExtResource("2_t8hnl")]
+position = Vector2(5, 16)
+blockText = "start"
+
+[node name="stop" parent="Control" index="1" instance=ExtResource("2_t8hnl")]
+position = Vector2(5, 94)
+
+[node name="if" parent="Control" index="2" instance=ExtResource("2_t8hnl")]
+position = Vector2(13, 29)
+blockText = "if"
+blockTexture = ExtResource("3_4brab")
+
+[node name="else" parent="Control" index="3" instance=ExtResource("2_t8hnl")]
+position = Vector2(13, 55)
+blockText = "else"
+blockTexture = ExtResource("3_4brab")
+
+[node name="end" parent="Control" index="4" instance=ExtResource("2_t8hnl")]
+position = Vector2(13, 81)
+blockText = "end"
+blockTexture = ExtResource("3_4brab")
+
+[node name="data" parent="Control" index="5" instance=ExtResource("2_t8hnl")]
+position = Vector2(27, 29)
+blockText = "data"
+blockTexture = ExtResource("3_pwkns")
+
+[node name="equals" parent="Control" index="6" instance=ExtResource("2_t8hnl")]
+position = Vector2(51, 29)
+blockText = "EQUALS"
+blockTexture = ExtResource("6_5rix3")
+
+[node name="secure" parent="Control" index="7" instance=ExtResource("2_t8hnl")]
+position = Vector2(89, 29)
+blockText = "secure"
+blockTexture = ExtResource("3_pwkns")
+
+[node name="then" parent="Control" index="8" instance=ExtResource("2_t8hnl")]
+position = Vector2(123, 29)
+blockText = "then"
+blockTexture = ExtResource("3_4brab")
+
+[node name="access_grant()" parent="Control" index="9" instance=ExtResource("2_t8hnl")]
+position = Vector2(21, 42)
+blockText = "access.grant()"
+blockTexture = ExtResource("5_mpkfb")
+
+[node name="access_deny()" parent="Control" index="10" instance=ExtResource("2_t8hnl")]
+position = Vector2(21, 68)
+blockText = "access.deny()"
+blockTexture = ExtResource("4_p2hex")
